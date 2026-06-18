@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Premium</title>
+    <style>
+        /* Estilo Dark Mode combinando com o seu portfólio */
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Container Principal da Calculadora */
+        .calculator {
+            background-color: #161b22;
+            border: 2px solid #30363d;
+            border-radius: 12px;
+            padding: 20px;
+            width: 320px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        #display {
+            width: 100%;
+            height: 60px;
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: #58a6ff;
+            font-size: 24px;
+            text-align: right;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            background-color: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: #c9d1d9;
+            font-size: 18px;
+            padding: 15px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background-color: #30363d;
+        }
+
+        button.operator {
+            color: #ff7b72;
+        }
+
+        button.equal {
+            background-color: #1f6feb;
+            color: #ffffff;
+            grid-column: span 2;
+        }
+
+        button.equal:hover {
+            background-color: #388bfd;
+        }
+
+        /* 🚨 TELA FALSA DE PAGAMENTO (OVERLAY) */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(13, 17, 23, 0.95);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .pay-box {
+            background-color: #21262d;
+            border: 2px solid #f85149;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 16px rgba(248, 81, 73, 0.2);
+        }
+
+        .pay-box h3 {
+            color: #f85149;
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        .pay-box p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .price {
+            font-size: 24px;
+            color: #58a6ff;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .pay-btn {
+            background-color: #238636;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 6px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .pay-btn:hover {
+            background-color: #2ea043;
+        }
+
+        .cancel-btn {
+            background-color: transparent;
+            color: #8b949e;
+            border: 1px solid #30363d;
+            font-size: 14px;
+            padding: 8px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <input type="text" id="display" readonly value="">
+
+        <div class="buttons">
+            <button onclick="clearDisplay()" class="operator">C</button>
+            <button onclick="appendValue('/')" class="operator">/</button>
+            <button onclick="appendValue('*')" class="operator">*</button>
+            <button onclick="appendValue('-')" class="operator">-</button>
+            
+            <button onclick="appendValue('7')">7</button>
+            <button onclick="appendValue('8')">8</button>
+            <button onclick="appendValue('9')">9</button>
+            <button onclick="appendValue('+')" class="operator">+</button>
+            
+            <button onclick="appendValue('4')">4</button>
+            <button onclick="appendValue('5')">5</button>
+            <button onclick="appendValue('6')">6</button>
+            
+            <button onclick="appendValue('1')">1</button>
+            <button onclick="appendValue('2')">2</button>
+            <button onclick="appendValue('3')">3</button>
+            
+            <button onclick="appendValue('0')">0</button>
+            <button onclick="appendValue('.')">.</button>
+            <button onclick="triggerPaywall()" class="equal">=</button>
+        </div>
+
+        <div id="paywall" class="overlay hidden">
+            <div class="pay-box">
+                <h3>💳 RESULT LOCKED!</h3>
+                <p>Para visualizar o resultado desta operação matemática, conclua o micro-pagamento regulatório:</p>
+                <div class="price">€9.99</div>
+                <button class="pay-btn" onclick="alert('Boa tentativa! Mas isso é só uma piada de UX desenvolvida por Aiman. ;)')">PAY NOW</button>
+                <button class="cancel-btn" onclick="closePaywall()">CANCEL</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let display = document.getElementById('display');
+
+        function appendValue(val) {
+            display.value += val;
+        }
+
+        function clearDisplay() {
+            display.value = '';
+        }
+
+        // Ativa a zoeira ao clicar no "="
+        function triggerPaywall() {
+            if (display.value === '') return;
+            
+            // O JavaScript calcula em segundo plano só para não dar erro de sintaxe
+            try {
+                let check = eval(display.value);
+                // Abre o popup na tela bloqueando tudo
+                document.getElementById('paywall').classList.remove('hidden');
+            } catch (e) {
+                display.value = 'Error';
+            }
+        }
+
+        function closePaywall() {
+            document.getElementById('paywall').classList.add('hidden');
+            clearDisplay();
+        }
+    </script>
+</body>
+</html>
