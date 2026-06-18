@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Premium</title>
+    <title>Premium Calculator</title>
     <style>
-        /* Estilo Dark Mode combinando com o seu portfólio */
+        /* Dark Mode style matching your portfolio */
         body {
             background-color: #0d1117;
             color: #c9d1d9;
@@ -18,7 +18,7 @@
             overflow: hidden;
         }
 
-        /* Container Principal da Calculadora */
+        /* Main Calculator Container */
         .calculator {
             background-color: #161b22;
             border: 2px solid #30363d;
@@ -78,7 +78,7 @@
             background-color: #388bfd;
         }
 
-        /* 🚨 TELA FALSA DE PAGAMENTO (OVERLAY) */
+        /* 🚨 FALSE PAYMENT OVERLAY */
         .overlay {
             position: absolute;
             top: 0;
@@ -136,6 +136,7 @@
             border-radius: 6px;
             width: 100%;
             margin-bottom: 10px;
+            cursor: pointer;
         }
 
         .pay-btn:hover {
@@ -149,6 +150,7 @@
             font-size: 14px;
             padding: 8px;
             width: 100%;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -184,9 +186,9 @@
         <div id="paywall" class="overlay hidden">
             <div class="pay-box">
                 <h3>💳 RESULT LOCKED!</h3>
-                <p>Para visualizar o resultado desta operação matemática, conclua o micro-pagamento regulatório:</p>
+                <p>Please complete the following micro-transaction to unlock the calculation result:</p>
                 <div class="price">€9.99</div>
-                <button class="pay-btn" onclick="alert('Boa tentativa! Mas isso é só uma piada de UX desenvolvida por Aiman. ;)')">PAY NOW</button>
+                <button class="pay-btn" onclick="alert('Nice try! But this is just a satirical UX experiment developed by Aiman. ;)')">PAY NOW</button>
                 <button class="cancel-btn" onclick="closePaywall()">CANCEL</button>
             </div>
         </div>
@@ -203,14 +205,14 @@
             display.value = '';
         }
 
-        // Ativa a zoeira ao clicar no "="
+        // Activates the prank when clicking "="
         function triggerPaywall() {
             if (display.value === '') return;
             
-            // O JavaScript calcula em segundo plano só para não dar erro de sintaxe
             try {
+                // Evaluates the calculation in the background to ensure syntax is valid
                 let check = eval(display.value);
-                // Abre o popup na tela bloqueando tudo
+                // Shows the overlay blocking the user interface
                 document.getElementById('paywall').classList.remove('hidden');
             } catch (e) {
                 display.value = 'Error';
