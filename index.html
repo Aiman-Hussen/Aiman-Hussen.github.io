@@ -3,42 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aiman Mamad Hussen - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Aiman Mamad Hussen | Portfolio</title>
+    <style>
+        /* Dark Mode Theme */
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 850px;
+            width: 100%;
+        }
+
+        header {
+            border-bottom: 2px solid #21262d;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #58a6ff;
+            margin: 0 0 10px 0;
+            font-size: 32px;
+        }
+
+        .subtitle {
+            color: #8b949e;
+            font-size: 18px;
+            margin: 0;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #ff7b72;
+            border-left: 4px solid #ff7b72;
+            padding-left: 10px;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #c9d1d9;
+        }
+
+        /* Project Cards Setup */
+        .grid {
+            display: block;
+        }
+
+        .card {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            border-color: #58a6ff;
+            transform: translateY(-2px);
+        }
+
+        .card h3 {
+            color: #58a6ff;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #8b949e;
+            margin-bottom: 15px;
+        }
+
+        /* Buttons Styling */
+        .btn-group {
+            display: block;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #1f6feb;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            margin-right: 10px;
+            margin-bottom: 5px;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #388bfd;
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background-color: #21262d;
+            color: #c9d1d9;
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            transition: background 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background-color: #30363d;
+        }
+
+        .badge {
+            background-color: #282e38;
+            color: #ff7b72;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Aiman Mamad Hussen</h1>
-        <p>B.Sc. Computer Science Student | GISMA University of Applied Sciences</p>
-    </header>
 
-    <main class="container">
-        <section class="card">
-            <h2>Technical Artefacts</h2>
-            <hr>
-            <ul class="project-list">
-                <li>
-                    <strong>Curriculum Vitae:</strong> 
-                    <a href="main.pdf" target="_blank">Download CV (PDF)</a> | 
-                    <a href="main.tex" target="_blank">Source Code (.tex)</a>
-                </li>
-                <li>
-                    <strong>Academic Report:</strong> 
-                    <a href="report.pdf" target="_blank">Download Report (PDF)</a> | 
-                    <a href="report.tex" target="_blank">Source Code (.tex)</a>
-                </li>
-            </ul>
+    <div class="container">
+        <header>
+            <h1>Aiman Mamad Hussen</h1>
+            <p class="subtitle">B.Sc. Computer Science Student at GISMA University of Applied Sciences</p>
+        </header>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                I am a Computer Science student currently based in Berlin, building a multi-disciplinary background that connects software development with real-world technical operations. Before moving into full-time computing, I gained valuable hands-on experience working as a mechanic, which gave me an intuitive understanding of complex physical machines, logistics, and troubleshooting technical systems under pressure. Additionally, my background working in the hotel hospitality sector helped me develop strong skills in workflow organization, team communication, and process management.
+            </p>
+            <p>
+                Today, I apply this practical logic to software engineering. My current focus centers around core computer science principles, interactive system architecture, front-end development, and game engineering using indie tools like Godot. I treat programming as a tool to bridge the physical and digital worlds—whether configuring backend automation or designing unique interfaces.
+            </p>
         </section>
 
-        <section class="card">
-            <h2>Technical Exercises & Projects</h2>
-            <hr>
-            <p>Coding exercises, game development prototypes, and laboratory work will be documented here during the semester.</p>
-        </section>
-    </main>
+        <section id="academic">
+            <h2>University Labs & Coursework</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <span class="badge">Computer Science Lab 1</span>
+                    <h3>Academic Portfolio & Mercedes-Benz Job Alignment</h3>
+                    <p>
+                        This project is a formal laboratory deliverable tracking my setup of version-controlled hosting architectures. It includes a deep dive and technical synergy review for a student programming and monitoring position at Mercedes-Benz AG, highlighting how practical mechanics and computing foundations work together.
+                    </p>
+                    <div class="btn-group">
+                        <a href="report.pdf" target="_blank" class="btn">View Report (PDF)</a>
+                        <a href="report.tex" target="_blank" class="btn-secondary">Source Code (.tex)</a>
+                    </div>
+                </div>
 
-    <footer>
-        <p>&copy; 2026 Aiman Mamad Hussen. Built with HTML & CSS.</p>
-    </footer>
+                <div class="card">
+                    <span class="badge">Professional Identity</span>
+                    <h3>Curriculum Vitae (Human-Optimized)</h3>
+                    <p>
+                        My professional academic resume structured entirely in LaTeX. It showcases my transition from technical mechanical backgrounds and hotel management frameworks directly into data tracking, software testing, and computer science workflows.
+                    </p>
+                    <div class="btn-group">
+                        <a href="main.pdf" target="_blank" class="btn">Download CV (PDF)</a>
+                        <a href="main.tex" target="_blank" class="btn-secondary">Source Code (.tex)</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Creative Coding & Independent Prototypes</h2>
+            <div class="grid">
+
+                <div class="card">
+                    <span class="badge">JavaScript / Interactive UI</span>
+                    <h3>Satirical Premium Calculator</h3>
+                    <p>
+                        A lighthearted front-end web utility designed to critique predatory user interfaces and digital monetization methods. Built with pure JavaScript and CSS overlays, it functions perfectly as a standard desktop calculator until the user attempts to view the calculation, which triggers a false premium paywall screen.
+                    </p>
+                    <div class="btn-group">
+                        <a href="calculator.html" target="_blank" class="btn">Launch Live Demo</a>
+                        <a href="https://github.com/Aiman-Hussen/Aiman-Hussen.github.io/blob/main/calculator.html" target="_blank" class="btn-secondary">Explore Repository</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="badge">Godot Engine / Prototype</span>
+                    <h3>2D Roguelite Gameplay System (Coming Soon)</h3>
+                    <p>
+                        An upcoming independent project focused on algorithmic state machines, collision layers, and procedural asset mechanics. Built using GDScript, with custom pixel art animations compiled via Aseprite.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Digital Nodes</h2>
+            <div class="btn-group">
+                <a href="https://github.com/Aiman-Hussen" target="_blank" class="btn">GitHub Profile</a>
+                <a href="mailto:aiman.hussen@example.com" class="btn-secondary">Email Connection</a>
+            </div>
+        </section>
+    </div>
+
 </body>
 </html>
